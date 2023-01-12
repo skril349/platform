@@ -60,6 +60,17 @@ services:
     ports:
       - "8081:8081"
 
+  mqtt:
+    container_name: mosquitto
+    image: eclipse-mosquitto:1.6
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - .server/mqtt/config:/mqtt/config
+      - .server/mqtt/log:/mqtt/log
+      - .server/mqtt/data/:/mqtt/data
+
 networks:
   strapi-app-network:
     driver: bridge
