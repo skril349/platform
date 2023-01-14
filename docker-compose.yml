@@ -70,6 +70,21 @@ services:
       - .server/mqtt/config:/mqtt/config
       - .server/mqtt/log:/mqtt/log
       - .server/mqtt/data/:/mqtt/data
+    restart: unless-stopped
+
+  react:
+    container_name: react
+    build: ./client/app
+    volumes:
+      - './client/app:/app'
+
+    ports:
+      - 3000:3000
+
+    restart: unless-stopped
+    depends_on:
+      - mongo
+      - mongo-express
 
 networks:
   strapi-app-network:
