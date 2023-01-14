@@ -1,13 +1,17 @@
-# pull official base image
+
+### NEESSARY TO CREATE DEVELOPMENT ENVIRONMENT###
+
+
+### pull official base image
 FROM node:13.12.0-alpine
 
-# set working directory
+### set working directory
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
+### add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 
-# install app dependencies
+### install app dependencies
 COPY **/package.json ./
 COPY **/package-lock.json ./
 RUN npm install --silent
@@ -15,6 +19,6 @@ RUN npm install react-scripts@3.4.1 -g --silent
 
 # add app
 COPY . ./
-
-# start app
+#start app
 CMD ["npm", "start"]
+
