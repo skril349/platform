@@ -88,32 +88,6 @@ services:
       - mongo
       - mongo-express
 
-  nginx:
-    depends_on:
-      - api
-      - client
-    restart: always
-    build:
-      dockerfile: Dockerfile
-      context: ./nginx
-    ports:
-      - "3050:80"
-
-#      - nginx
-
-#  nginx:
-#    build: ./client/app/nginx
-#    restart: unless-stopped
-#    ports:
-#      - "80:80"
-#      - "443:443"
-#    volumes:
-#      - ./client/app/volume1:/usr/share/nginx/html
-#    links:
-#      - "mongo"
-#      - "api"
-      
-
 networks:
   strapi-app-network:
     driver: bridge
